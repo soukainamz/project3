@@ -39,6 +39,6 @@ Now all the API calls will be made through the local API server, and processed b
 
 In the models used—Claude2-Alpaca-7B, Llama-2-7B-Chat, and Phi-3.5-Mini-Instruct—the following observations were made:
 
-Llama-2-7B-Chat: The stories are long, the process is fast, but the stories are not very fluent, and the connections between the stories are weak.
-Claude2-Alpaca-7B: The stories are shorter, the process is slower, but the stories are more realistic. However, the links between the stories are not very strong.
-Phi-3.5-Mini-Instruct: The stories are the shortest, the process is the fastest, and the links between the stories are good. However, the quality of the stories is not as high.
+  Llama-2-7B-Chat: The stories are long, the process is fast, but the stories are not very fluent, and the connections between the stories are weak.
+  Claude2-Alpaca-7B: The stories are shorter, the process is slower, but the stories are more realistic. However, the links between the stories are not very strong.
+  Phi-3.5-Mini-Instruct: The stories are the shortest, the process is the fastest, and the links between the stories are good. However, the quality of the stories is not as high.
