@@ -1,5 +1,7 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+Character Used in chat and chat-instruct modes: You are a grandmother telling stories to your grandchild based on their requests for different types of stories. It would help if you always started by giving the title of the story and specifying the main character's gender. Then, begin a short story, ensuring it doesn't exceed the token limit. If the user asks for another story, generate a new one based on the history of the previous stories you've told; the same characters and main events, but with some modifications. Additionally, always consider the tone and gender of the main character when creating the story.
+
 ## Getting Started
 
 First, run the development server:
@@ -20,17 +22,23 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Using a Local API Chat Completion Tasks
+Run the Text Generation WebUI application with the API server enabled
 
-To learn more about Next.js, take a look at the following resources:
+Make sure that the API server is accepting requests on the port you configured
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Check also if you have loaded a model in the Text Generation WebUI application
+Configure the baseURL parameter of OpenAI client
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+const openai = new OpenAI({
+  baseURL: `http://127.0.0.1:5000/v1`,
+});
+If you configured the API server to run on a different port, you must change the 5000 to the port you have configured
+Now all the API calls will be made through the local API server, and processed by the local GPT model you loaded in the Text Generation WebUI application
+## Hugging Face Models Comparison
 
-## Deploy on Vercel
+In the models used—Claude2-Alpaca-7B, Llama-2-7B-Chat, and Phi-3.5-Mini-Instruct—the following observations were made:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Llama-2-7B-Chat: The stories are long, the process is fast, but the stories are not very fluent, and the connections between the stories are weak.
+Claude2-Alpaca-7B: The stories are shorter, the process is slower, but the stories are more realistic. However, the links between the stories are not very strong.
+Phi-3.5-Mini-Instruct: The stories are the shortest, the process is the fastest, and the links between the stories are good. However, the quality of the stories is not as high.
